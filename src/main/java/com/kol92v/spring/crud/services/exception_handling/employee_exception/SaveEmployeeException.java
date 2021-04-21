@@ -6,6 +6,6 @@ public class SaveEmployeeException extends EmployeeRequestException {
 
     public SaveEmployeeException(Employee employee) {
         super("This employee is present in " +
-                "Database already:\n" + employee);
+                "Database already: " + employee);
     }
 }

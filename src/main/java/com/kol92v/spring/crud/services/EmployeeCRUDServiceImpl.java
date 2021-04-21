@@ -7,9 +7,8 @@ import com.kol92v.spring.crud.services.exception_handling.employee_exception.Sav
 import com.kol92v.spring.crud.services.exception_handling.employee_exception.UpdateEmployeeException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import javax.persistence.EntityNotFoundException;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class EmployeeCRUDServiceImpl implements EmployeeCRUDService{
@@ -27,12 +26,9 @@ public class EmployeeCRUDServiceImpl implements EmployeeCRUDService{
 
     private boolean isPresentEmpInBase(int id) {
         if (id == 0) return false;
-        try {
-            employeeRepository.getOne(id);
-            return true;
-        } catch (EntityNotFoundException e) {
-            return false;
-        }
+        Optional<Employee> empFromBase = employeeRepository.findById(id);
+        return empFromBase.isPresent();
+
     }
 
 
@@ -48,7 +44,7 @@ public class EmployeeCRUDServiceImpl implements EmployeeCRUDService{
     @Override
     public Employee update(Employee employee) {
         if (!isPresentEmpInBase(employee)) {
-            throw new UpdateEmployeeException(employee); //TODO create my exception
+            throw new UpdateEmployeeException(employee);
         } else {
             return employeeRepository.save(employee);
         }
@@ -68,9 +64,9 @@ public class EmployeeCRUDServiceImpl implements EmployeeCRUDService{
     @Override
     public Employee getEmployee(int id) {
         if (isPresentEmpInBase(id)) {
-            return employeeRepository.getOne(id);
+            return employeeRepository.findById(id).get();
         } else {
-            throw new GetEmployeeException(id); //TODO create my exception
+            throw new GetEmployeeException(id);
         }
     }
 }

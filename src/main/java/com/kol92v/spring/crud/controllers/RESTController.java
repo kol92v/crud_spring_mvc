@@ -24,7 +24,9 @@ public class RESTController {
 
     @PutMapping("/employees")
     public Employee update(@RequestBody Employee employee) {
-        return employeeCRUDService.update(employee);
+        Employee update = employeeCRUDService.update(employee);
+        System.out.println("hey");
+        return update;
     }
 
     @DeleteMapping("/employees/{id}")
