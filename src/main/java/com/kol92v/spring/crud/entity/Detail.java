@@ -2,10 +2,7 @@ package com.kol92v.spring.crud.entity;
 
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "details")
@@ -24,5 +21,9 @@ public class Detail implements MyEntity{
 
     @Column(name = "sex")
     private String sex;
+
+//    @OneToOne(mappedBy = "detail",
+//    cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+//    private Employee employee;
 
 }

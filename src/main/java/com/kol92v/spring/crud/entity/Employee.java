@@ -20,9 +20,17 @@ public class Employee implements MyEntity {
     @Column(name = "last_name")
     private String lastName;
 
-    @Column(name = "department_id")
-    private int departmentId;
-
     @Column(name = "salary")
     private int salary;
+
+    @Column(name = "department_id")
+    private int department;
+
+//    @ManyToOne(cascade = {CascadeType.REFRESH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.DETACH})
+//    @JoinColumn(name = "department_id")
+//    private Department department;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id")
+    private Detail detail;
 }
