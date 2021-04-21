@@ -1,4 +1,4 @@
-package com.kol92v.spring.crud.services.crud_services;
+package com.kol92v.spring.crud.services;
 
 import com.kol92v.spring.crud.dao.EmployeeRepository;
 import com.kol92v.spring.crud.entity.Employee;

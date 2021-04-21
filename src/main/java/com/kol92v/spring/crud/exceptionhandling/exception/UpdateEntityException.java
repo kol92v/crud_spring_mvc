@@ -1,4 +1,4 @@
-package com.kol92v.spring.crud.services.exception_handling.myentity_exception;
+package com.kol92v.spring.crud.exceptionhandling.exception;
 
 import com.kol92v.spring.crud.entity.MyEntity;
 

@@ -1,7 +1,7 @@
 package com.kol92v.spring.crud.controllers;
 
 import com.kol92v.spring.crud.entity.MyEntity;
-import com.kol92v.spring.crud.services.crud_services.CRUDService;
+import com.kol92v.spring.crud.services.CRUDService;
 import lombok.AllArgsConstructor;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.web.bind.annotation.*;

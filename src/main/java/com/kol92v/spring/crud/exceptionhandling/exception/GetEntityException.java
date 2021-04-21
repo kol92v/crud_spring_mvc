@@ -1,4 +1,4 @@
-package com.kol92v.spring.crud.services.exception_handling.myentity_exception;
+package com.kol92v.spring.crud.exceptionhandling.exception;
 
 public class GetEntityException extends EntityRequestException {
 

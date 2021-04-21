@@ -1,7 +1,7 @@
-package com.kol92v.spring.crud.services.exception_handling;
+package com.kol92v.spring.crud.exceptionhandling;
 
 
-import com.kol92v.spring.crud.services.exception_handling.myentity_exception.EntityRequestException;
+import com.kol92v.spring.crud.exceptionhandling.exception.EntityRequestException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;

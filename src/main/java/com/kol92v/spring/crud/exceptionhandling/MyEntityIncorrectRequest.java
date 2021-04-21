@@ -1,4 +1,4 @@
-package com.kol92v.spring.crud.services.exception_handling;
+package com.kol92v.spring.crud.exceptionhandling;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
