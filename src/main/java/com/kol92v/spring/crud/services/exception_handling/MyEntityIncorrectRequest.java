@@ -7,7 +7,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @Setter
 @Getter
-public class EmployeeIncorrectRequest {
+public class MyEntityIncorrectRequest {
     private String info;
 
 

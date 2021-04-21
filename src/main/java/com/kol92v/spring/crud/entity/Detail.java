@@ -10,7 +10,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "details")
 @Data
-public class Detail {
+public class Detail extends MyEntity{
 
     @Id
     @Column(name = "id")
