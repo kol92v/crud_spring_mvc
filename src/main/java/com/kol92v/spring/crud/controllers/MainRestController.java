@@ -1,6 +1,8 @@
 package com.kol92v.spring.crud.controllers;
 
-import com.kol92v.spring.crud.entity.MyEntity;
+import com.kol92v.spring.crud.converters.ConverterEntityDTO;
+import com.kol92v.spring.crud.dto.DTO;
+import com.kol92v.spring.crud.entity.Entity;
 import com.kol92v.spring.crud.services.CRUDService;
 import lombok.AllArgsConstructor;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -9,17 +11,20 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @AllArgsConstructor
-public abstract class MainRestController<Entity extends MyEntity, Repository extends JpaRepository<Entity, Integer>> {
-    protected final CRUDService<Entity, Repository> crudService;
+public abstract class MainRestController<E extends Entity, D extends DTO, R extends JpaRepository<E, Integer>> {
+    protected final CRUDService<E, R> crudService;
+    protected final ConverterEntityDTO<D, E> converterEntityDTO;
 
     @PostMapping("/")
-    public Entity save(@RequestBody Entity entity) {
-        return crudService.save(entity);
+    public D save(@RequestBody D dto) {
+        E entity = converterEntityDTO.convert(dto);
+        return converterEntityDTO.convert(crudService.save(entity));
     }
 
     @PutMapping("/")
-    public Entity update(@RequestBody Entity entity) {
-        return crudService.update(entity);
+    public D update(@RequestBody D dto) {
+        E entity = converterEntityDTO.convert(dto);
+        return converterEntityDTO.convert(crudService.update(entity));
     }
 
     @DeleteMapping("/{id}")
@@ -28,13 +33,13 @@ public abstract class MainRestController<Entity extends MyEntity, Repository ext
     }
 
     @GetMapping("/")
-    public List<Entity> getAllEntity() {
-        return crudService.getAllEntity();
+    public List<D> getAllEntity() {
+        return converterEntityDTO.convert(crudService.getAllEntity());
     }
 
     @GetMapping("/{id}")
-    public Entity getEntity(@PathVariable int id) {
-        return crudService.getEntity(id);
+    public D getEntity(@PathVariable int id) {
+        return converterEntityDTO.convert(crudService.getEntity(id));
     }
 
 }

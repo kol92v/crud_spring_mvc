@@ -1,13 +1,17 @@
 package com.kol92v.spring.crud.entity;
 
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
-@Entity
+@javax.persistence.Entity
 @Table(name = "details")
 @Data
-public class Detail implements MyEntity{
+@Builder
+@NoArgsConstructor
+public class Detail implements Entity {
 
     @Id
     @Column(name = "id")

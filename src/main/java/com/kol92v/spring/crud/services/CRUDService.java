@@ -1,6 +1,6 @@
 package com.kol92v.spring.crud.services;
 
-import com.kol92v.spring.crud.entity.MyEntity;
+import com.kol92v.spring.crud.entity.Entity;
 import com.kol92v.spring.crud.exceptionhandling.exception.GetEntityException;
 import com.kol92v.spring.crud.exceptionhandling.exception.SaveEntityException;
 import com.kol92v.spring.crud.exceptionhandling.exception.UpdateEntityException;
@@ -10,27 +10,27 @@ import java.util.List;
 
 
 @AllArgsConstructor
-public abstract class CRUDService<Entity extends MyEntity, Repository extends JpaRepository<Entity, Integer>> {
+public abstract class CRUDService<E extends Entity, R extends JpaRepository<E, Integer>> {
 
-    protected final Repository repository;
+    protected final R repository;
 
-    protected boolean isPresentEntityInBase(Entity myEntity) {
-        return repository.findById(myEntity.getId()).isPresent();
+    protected boolean isPresentEntityInBase(E entity) {
+        return repository.findById(entity.getId()).isPresent();
     }
 
-    public Entity save(Entity myEntity) {
-        if (isPresentEntityInBase(myEntity)) {
-            throw new SaveEntityException(myEntity);
+    public E save(E entity) {
+        if (isPresentEntityInBase(entity)) {
+            throw new SaveEntityException(entity);
         } else {
-            return repository.save(myEntity);
+            return repository.save(entity);
         }
     }
 
-    public Entity update(Entity myEntity) {
-        if (!isPresentEntityInBase(myEntity)) {
-            throw new UpdateEntityException(myEntity);
+    public E update(E entity) {
+        if (!isPresentEntityInBase(entity)) {
+            throw new UpdateEntityException(entity);
         } else {
-            return repository.save(myEntity);
+            return repository.save(entity);
         }
     }
 
@@ -38,11 +38,11 @@ public abstract class CRUDService<Entity extends MyEntity, Repository extends Jp
         repository.deleteById(id);
     }
 
-    public List<Entity> getAllEntity() {
+    public List<E> getAllEntity() {
         return repository.findAll();
     }
 
-    public Entity getEntity(int id) {
+    public E getEntity(int id) {
         return repository.findById(id).orElseThrow(() -> new GetEntityException(id));
     }
 

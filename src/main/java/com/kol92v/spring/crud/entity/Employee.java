@@ -1,13 +1,17 @@
 package com.kol92v.spring.crud.entity;
 
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
-@Entity
+@javax.persistence.Entity
 @Table(name = "employees")
 @Data
-public class Employee implements MyEntity {
+@Builder
+@NoArgsConstructor
+public class Employee implements Entity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,14 +27,14 @@ public class Employee implements MyEntity {
     @Column(name = "salary")
     private int salary;
 
-    @Column(name = "department_id")
-    private int department;
+//    @Column(name = "department_id")
+//    private int department;
 
 //    @ManyToOne(cascade = {CascadeType.REFRESH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.DETACH})
 //    @JoinColumn(name = "department_id")
 //    private Department department;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id")
-    private Detail detail;
+//    @OneToOne(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "id")
+//    private Detail detail;
 }
