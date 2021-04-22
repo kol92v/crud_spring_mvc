@@ -1,5 +1,6 @@
 package com.kol92v.spring.crud.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,6 +12,7 @@ import javax.persistence.*;
 @Data
 @Builder
 @NoArgsConstructor
+@AllArgsConstructor
 public class Department implements Entity {
 
     @Id
