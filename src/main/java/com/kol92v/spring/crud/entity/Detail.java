@@ -16,7 +16,7 @@ import javax.persistence.*;
 public class Detail implements Entity {
 
     @Id
-    @Column(name = "id")
+    @Column(name = "id_det")
     private int id;
 
     @Column(name = "city")
@@ -27,9 +27,5 @@ public class Detail implements Entity {
 
     @Column(name = "sex")
     private String sex;
-
-//    @OneToOne(mappedBy = "detail",
-//    cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
-//    private Employee employee;
 
 }

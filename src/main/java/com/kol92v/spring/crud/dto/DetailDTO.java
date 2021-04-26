@@ -13,5 +13,4 @@ public class DetailDTO implements DTO {
     private String city;
     private int age;
     private String sex;
-//    private Employee employee;
 }

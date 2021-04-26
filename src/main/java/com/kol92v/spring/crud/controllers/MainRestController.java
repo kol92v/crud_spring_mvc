@@ -34,7 +34,7 @@ public abstract class MainRestController<E extends Entity, D extends DTO, R exte
 
     @GetMapping("/")
     public List<D> getAllEntity() {
-        return converterEntityDTO.convert(crudService.getAllEntity());
+        return converterEntityDTO.convertToDTO(crudService.getAllEntity());
     }
 
     @GetMapping("/{id}")

@@ -4,8 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import javax.persistence.*;
+import java.util.List;
 
 @javax.persistence.Entity
 @Table(name = "departments")
@@ -22,8 +22,4 @@ public class Department implements Entity {
 
     @Column(name = "name")
     private String name;
-
-//    @OneToMany(mappedBy = "department",
-//            cascade = CascadeType.ALL)
-//    private List<Employee> employees;
 }

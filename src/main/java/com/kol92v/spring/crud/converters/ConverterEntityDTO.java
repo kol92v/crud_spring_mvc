@@ -10,7 +10,11 @@ public interface ConverterEntityDTO<D extends DTO, E extends Entity> {
      D convert(E entity);
      E convert(D dto);
 
-     default List<D> convert(List<E> allEntity) {
+     default List<D> convertToDTO(List<E> allEntity) {
           return allEntity.stream().map(this::convert).collect(Collectors.toList());
+     }
+
+     default List<E> convertToEntity(List<D> allDTO) {
+          return allDTO.stream().map(this::convert).collect(Collectors.toList());
      }
 }
